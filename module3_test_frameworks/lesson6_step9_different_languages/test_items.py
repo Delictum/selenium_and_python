@@ -4,6 +4,7 @@ The task: https://stepik.org/lesson/237240/step/9?unit=209628
 
 import time
 
+import pytest
 from selenium.common.exceptions import NoSuchElementException
 
 link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
@@ -17,6 +18,7 @@ def is_element_exist_by_class_name(browser, selector: str) -> bool:
     :param selector: class name
     :return: True if element exists else False
     """
+
     try:
         browser.find_element_by_class_name(selector)
         return True
@@ -31,9 +33,12 @@ def test_exist_add_to_basket_btn(browser):
 
     browser.get(link)
     time.sleep(30)
-    assert is_element_exist_by_class_name(browser, "btn-add-to-basket"), "Element doesn't exist"
+    with pytest.raises(AssertionError):
+        assert is_element_exist_by_class_name(browser, "btn-add-to-basket"), "Element doesn't exist"
+        pytest.fail("Element doesn't exist")
 
 
+# @pytest.mark.xfail
 # def test_exist_basket(browser):
 #     """
 #     The test confirms that there is a shopping cart element on the product page on the site.
@@ -41,4 +46,6 @@ def test_exist_add_to_basket_btn(browser):
 #
 #     browser.get(link)
 #     time.sleep(3)
-#     assert is_element_exist_by_class_name(browser, "basket"), "Element doesn't exist"
+#     with pytest.raises(AssertionError):
+#         assert is_element_exist_by_class_name(browser, "basket"), "Element doesn't exist"
+#         pytest.fail("Element doesn't exist")
