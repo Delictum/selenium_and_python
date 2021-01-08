@@ -5,7 +5,7 @@ The task: https://stepik.org/lesson/236918/step/7?unit=209305
 import pytest
 
 
-class TestMainPage():
+class TestMainPage:
     # номер 1
     @pytest.mark.xfail
     @pytest.mark.smoke
@@ -18,7 +18,7 @@ class TestMainPage():
         assert True
 
 
-class TestBasket():
+class TestBasket:
     # номер 3
     @pytest.mark.skip(reason="not implemented yet")
     @pytest.mark.smoke
@@ -32,7 +32,7 @@ class TestBasket():
 
 
 @pytest.mark.skip
-class TestBookPage():
+class TestBookPage:
     # номер 5
     @pytest.mark.smoke
     def test_guest_can_add_book_to_basket(self, browser):
