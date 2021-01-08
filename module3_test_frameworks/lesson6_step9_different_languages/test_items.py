@@ -32,10 +32,8 @@ def test_exist_add_to_basket_btn(browser):
     """
 
     browser.get(link)
-    time.sleep(30)
-    with pytest.raises(AssertionError):
-        assert is_element_exist_by_class_name(browser, "btn-add-to-basket"), "Element doesn't exist"
-        pytest.fail("Element doesn't exist")
+    time.sleep(3)
+    assert is_element_exist_by_class_name(browser, "btn-add-to-basket"), "Element doesn't exist"
 
 
 # @pytest.mark.xfail
@@ -45,7 +43,5 @@ def test_exist_add_to_basket_btn(browser):
 #     """
 #
 #     browser.get(link)
-#     time.sleep(3)
-#     with pytest.raises(AssertionError):
-#         assert is_element_exist_by_class_name(browser, "basket"), "Element doesn't exist"
-#         pytest.fail("Element doesn't exist")
+#     time.sleep(2)
+#     assert is_element_exist_by_class_name(browser, "basket"), "Element doesn't exist"
